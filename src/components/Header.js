@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 const Header = ({ text }) => {
   return (
-  
       <header style={{ backgroundColor: 'blue'}}>
         <div className='container'>
           <h1>{text}</h1>
