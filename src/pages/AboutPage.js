@@ -7,6 +7,7 @@ const AboutPage = () => {
     <div className='about'>
       <h1>About This Project</h1>
       <p>This is a React app to leave feedback for a product or service</p>
+      <p>Justin coded this in early 2022 as part of his React learning roadmap</p>
       <p>Version: 1.0.0</p>
       <p>
         <Link to='/'>Back To Home</Link>
