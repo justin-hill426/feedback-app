@@ -1,33 +1,29 @@
-import {createContext, useState} from 'react';
+import {createContext, useEffect, useState} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 const FeedbackContext = createContext()
 
 export const FeedbackProvider = ({children}) => {
-  const [feedback, setFeedback] = useState([
-    {
-      id: 1,
-      text: 'This is a feedback item app coded by Justin Hill',
-      rating: 10,
-    },
-    {
-      id: 2,
-      text: 'It uses React\'s use context hooks to dynamically update the state of the application',
-      rating: 8,
-    },
-    {
-      id: 3,
-      text: 'Have Fun!!!',
-      rating: 5,
+  const [isLoading, setIsLoading] = useState(true);
 
-    },
-  ])
+  const [feedback, setFeedback] = useState([])
 
   // add feedback
   const [feedbackEdit, setFeedbackEdit] = useState({
     item: {},
     edit: false,
   })
+
+  useEffect(() => {
+    fetchFeedback();
+  }, [])
+
+  const fetchFeedback = async () => {
+    const response = await fetch(`http://localhost:4000/feedback?_sort=id&_order=desc`)
+    const data = await response.json();
+    setFeedback(data);
+    setIsLoading(false);
+  }
 
   // set item to be updated
   const editFeedback = (item) => {
@@ -59,6 +55,7 @@ export const FeedbackProvider = ({children}) => {
     deleteFeedback,
     addFeedback,
     editFeedback,
+    isLoading,
     feedbackEdit,
     updateFeedback,
   }}>
