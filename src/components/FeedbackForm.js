@@ -56,10 +56,10 @@ const FeedbackForm = () => {
   return (
   <Card>
     <form onSubmit={handleSubmit}>
-      <h2>How would you rate your service with us?</h2>
+      <h2>New Question Form</h2>
       <RatingSelect select={(rating) => setRating(rating)}/>
       <div className='input-group'>
-        <input type='text' placeholder='Write a review' onChange={handleTextChange} value={text}/>
+        <input type='text' placeholder='Add Feedback Here' onChange={handleTextChange} value={text}/>
         <Button type='submit' isDisabled={btnDisabled}>Send</Button>
       </div>
 
